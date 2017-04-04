@@ -4,8 +4,6 @@ var controller = require('../http/controller/hotelController');
 
 router.get('/hotels', controller.all);
 
-router.post('/hotel', function(req, res, next) {
-    //TODO
-});
+router.post('/hotel', controller.add);
 
 module.exports = router;
