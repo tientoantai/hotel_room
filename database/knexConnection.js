@@ -1,14 +1,12 @@
-var knex = require('knex')({
+var knexConnecyionProvider = require('knex')({
     client: 'mysql',
     connection: {
         host : '127.0.0.1',
         user : 'root',
         password : 'root',
-        database : 'hotel'
+        database : 'hotel_test'
     },
-    migrations: {
-        tableName: 'migrations'
-    }
+    useNullAsDefault: true
 });
 
-module.exports = knex;
+module.exports = knexConnecyionProvider;
