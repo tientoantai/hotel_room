@@ -1,16 +1,7 @@
 'use strict';
 
 var Hotel = require('./Hotel');
-var knex = require('knex')({
-    client: 'mysql',
-    connection: {
-        host : '127.0.0.1',
-        user : 'root',
-        password : 'root',
-        database : 'hotel_test'
-    },
-    useNullAsDefault: true
-});
+var knex = require('../../database/knexConnection');
 
 var HotelRepository = function (){
 
@@ -21,13 +12,7 @@ var HotelRepository = function (){
  *
  */
 HotelRepository.prototype.all = function(){
-    knex().select().from('hotels').timeout(1000)
-        .then(function (res) {
-            return res;
-        }, function(error) {
-            console.log(error);
-        });
-
+    return knex().select().from('hotels').timeout(1000)
 };
 
 /**
@@ -35,7 +20,7 @@ HotelRepository.prototype.all = function(){
  *
  */
 HotelRepository.prototype.add = function(hotel){
-    knex()
+    return knex.insert(hotel).into('hotels');
 };
 
 module.exports = HotelRepository;
