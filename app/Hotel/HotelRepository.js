@@ -23,4 +23,9 @@ HotelRepository.prototype.add = function(hotel){
     return knex.insert(hotel).into('hotels');
 };
 
+HotelRepository.prototype.get = function(hotel_id){
+    return knex.select().from('hotels')
+        .where('hotel_id', '=', hotel_id);
+};
+
 module.exports = HotelRepository;
