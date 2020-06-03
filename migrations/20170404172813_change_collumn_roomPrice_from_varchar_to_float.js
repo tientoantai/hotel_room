@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-    return knex.schema.table('rooms', function (table) {
+    return knex.schema.alterTable('rooms', function (table) {
         table.string('room_price').alter();
     });
 };
